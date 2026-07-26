@@ -4,3 +4,4 @@ numpy
 ta
 torch
 websockets
+python-dotenv
