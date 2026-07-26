@@ -6,3 +6,5 @@ torch
 websockets
 python-dotenv
 scikit-learn
+fastapi
+uvicorn
