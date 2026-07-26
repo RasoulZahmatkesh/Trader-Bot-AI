@@ -97,7 +97,7 @@ json
 ---
 
 # Architecture
-Exchange
+                    Exchange
                         |
                       CCXT
                         |
@@ -173,17 +173,13 @@ python train_runner.py
 
 Training pipeline:
 Historical Data
-
         |
-
 Dataset Builder
-
         |
 
 AI Training
-
         |
-
+    
 model.pth
 
 
