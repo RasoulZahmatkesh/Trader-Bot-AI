@@ -97,50 +97,27 @@ json
 ---
 
 # Architecture
-
-
-                    Exchange
-
-                       |
-
+Exchange
+                        |
                       CCXT
-
-                       |
-
+                        |
                 Market Data Layer
-
                        |
-
                   AI Predictor
-
                        |
-
           ----------------------------
-
           |                          |
-
         LSTM                  Transformer
-
           |                          |
-
           ----------------------------
-
                        |
-
                  Ensemble Model
-
                        |
-
                 Signal Generator
-
                        |
-
                   FastAPI
-
                        |
-
              External Applications
-
 
 ---
 
