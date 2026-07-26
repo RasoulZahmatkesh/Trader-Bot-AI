@@ -172,15 +172,14 @@ Download historical market data:
 python train_runner.py
 
 Training pipeline:
-Historical Data
-        |
-Dataset Builder
-        |
 
-AI Training
-        |
-    
-model.pth
+            Historical Data
+                    |
+            Dataset Builder
+                    |
+                AI Training
+                    |
+                model.pth
 
 
 After training the model will be loaded automatically.
