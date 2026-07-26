@@ -5,69 +5,356 @@ Here’s a **complete `README.md`** suitable for your GitHub repo for the crypto
 A Python-based cryptocurrency trading bot that supports multiple exchanges and symbols,
 using a combination of rule-based strategies and AI for decision-making.
 ---
+# AI Trading Signal Engine
+
+![Python](https://img.shields.io/badge/Python-3.10+-blue)
+![PyTorch](https://img.shields.io/badge/PyTorch-AI-red)
+![CCXT](https://img.shields.io/badge/Exchange-CCXT-green)
+![FastAPI](https://img.shields.io/badge/API-FastAPI-teal)
+![Tests](https://img.shields.io/badge/Tests-Pytest-success)
+![License](https://img.shields.io/badge/License-MIT-yellow)
+
+An AI-powered trading signal generation engine built with **Python, PyTorch, CCXT, and FastAPI**.
+
+This project focuses on generating intelligent market signals using deep learning models such as **LSTM and Transformer architectures**.
+
+The engine is designed as an independent AI signal service that can be connected to external systems such as:
+
+- Trading bots
+- Portfolio managers
+- Web applications
+- Automated execution systems
+
+
+> ⚠️ This project generates trading signals. It does not guarantee profits and should not be considered financial advice.
+
+---
 
 # Features
 
-- Connect to multiple exchanges via API
-- Receive **real-time price updates** using WebSockets
-- Calculate popular technical indicators: RSI, EMA, MACD
-- Decision-making via **rule-based strategy** and **AI model**
-- Execute trades automatically (BUY/SELL)
-- Support multiple cryptocurrency pairs simultaneously
+## Artificial Intelligence
+
+- LSTM neural network model
+- Transformer neural network model
+- Ensemble AI prediction
+- Confidence-based signals
+- Probability distribution output
+- PyTorch-based architecture
+
+
+## Market Data
+
+- CCXT exchange integration
+- Real-time OHLCV data
+- Historical market data downloader
+- Multi-exchange support
+
+
+Supported exchanges depend on CCXT:
+
+- Binance
+- Bybit
+- OKX
+- KuCoin
+- Many others
+
+
+## Signal Engine
+
+Generated signals:
+LONG
+SHORT
+HOLD
+
+Example:
+
+json
+{"symbol": "BTC/USDT",
+    "signal": "LONG",
+    "confidence": 0.91,
+    "model": "ensemble",
+    "probability": {
+        "LONG":0.91,
+        "SHORT":0.05,
+        "HOLD":0.04}}
+
+
+## API
+
+Built-in REST API:
+
+GET /signal
+
+Example response:
+
+json
+{"status":"success",
+    "data":{"symbol":"BTC/USDT",
+        "signal":"LONG",
+        "confidence":0.88,
+        "timestamp":"2026-01-01T12:00:00"}}
+
 ---
 
-# Project Structure
+# Architecture
 
-crypto_trader/
-│
-├── main.py             # Main bot loop
-├── exchanges.py        # Manage exchange connections
-├── data_stream.py      # Receive real-time prices
-├── indicators.py       # Calculate indicators
-├── strategy.py         # Decision-making logic
-├── trader_ai.py        # AI model
-├── requirements.txt
-└── README.md
+
+                    Exchange
+
+                       |
+
+                      CCXT
+
+                       |
+
+                Market Data Layer
+
+                       |
+
+                  AI Predictor
+
+                       |
+
+          ----------------------------
+
+          |                          |
+
+        LSTM                  Transformer
+
+          |                          |
+
+          ----------------------------
+
+                       |
+
+                 Ensemble Model
+
+                       |
+
+                Signal Generator
+
+                       |
+
+                  FastAPI
+
+                       |
+
+             External Applications
+
 
 ---
 
 # Installation
 
-1. Clone the repository:
+Clone repository:
 
-git clone https://github.com/yourusername/crypto_trader.git
-cd crypto_trader
+git clone https://github.com/RasoulZahmatkesh/Trader-Bot-AI.git
 
 
-2. Install dependencies:
+Enter project:
+cd Trader-Bot-AI
 
+
+Create virtual environment:
+python -m venv venv
+
+
+Activate:
+Windows:
+venv\Scripts\activate
+
+Linux:
+source venv/bin/activate
+
+
+Install dependencies:
 pip install -r requirements.txt
 
-
-3. Replace `API_KEY` and `SECRET` in `main.py` with your exchange credentials.
 ---
 
-# Usage
+# Configuration
+Create environment file:
+.env
 
-Run the bot:
+Example:
+env
+EXCHANGE=binance
+API_KEY=your_api_key
+API_SECRET=your_secret
+SYMBOL=BTC/USDT
+TIMEFRAME=5m
+MODEL_TYPE=ensemble
 
-python main.py
 
-* The bot fetches real-time price data.
-* It calculates indicators and uses both rule-based logic and AI to make trading decisions.
-* Trades are executed automatically on connected exchanges.
+Never upload .env to GitHub.
+
 ---
 
-# Notes
+# Training AI Model
+Download historical market data:
+python train_runner.py
 
-* ⚠️ **Paper Trading Recommended:** This bot is for educational and testing purposes. Use a sandbox or small amounts before live trading.
-* AI model is a simple starter model; accuracy depends on your training data.
-* Add your desired symbols to `SYMBOLS` in `main.py`.
+Training pipeline:
+Historical Data
+
+        |
+
+Dataset Builder
+
+        |
+
+AI Training
+
+        |
+
+model.pth
+
+
+After training the model will be loaded automatically.
+
 ---
 
-# Future Improvements
+# Running Signal API
 
-* Advanced AI models (Reinforcement Learning: PPO/DQN)
-* Stop-loss / Take-profit risk management
-* Multi-exchange and async order execution
-* Logging and database integration
+Start API server:
+uvicorn server:app --host 0.0.0.0 --port 8000
+
+
+Open:
+http://localhost:8000
+
+
+Get signal:
+GET /signal
+
+---
+
+# AI Models
+
+## LSTM
+
+Good for:
+- Sequential patterns
+- Time-series learning
+- Historical dependencies
+
+
+## Transformer
+
+Good for:
+- Long-range dependencies
+- Attention-based pattern recognition
+- Complex market sequences
+
+
+## Ensemble
+
+Combines:
+LSTM Prediction + Transformer Prediction = Final Signal
+
+---
+
+# Testing
+
+Run tests:
+pytest
+
+Run coverage:
+pytest --cov=.
+
+
+Testing includes:
+
+- AI model tests
+- Predictor tests
+- API tests
+- Engine tests
+- Signal validation
+
+---
+
+# Security
+Implemented security features:
+
+- Environment-based secrets
+- API token authentication
+- Rate limiting support
+- Input validation
+- Secure logging
+- Dependency auditing
+
+Security tools:
+pip-audit
+
+
+---
+
+# Roadmap
+## Completed
+
+- [x] CCXT integration
+- [x] PyTorch AI models
+- [x] LSTM model
+- [x] Transformer model
+- [x] Ensemble prediction
+- [x] Signal API
+- [x] Automated testing
+- [x] Security improvements
+
+
+## Future
+- [ ] WebSocket streaming
+- [ ] Advanced feature engineering
+- [ ] Multi-timeframe analysis
+- [ ] Reinforcement Learning model
+- [ ] Model performance dashboard
+- [ ] Docker deployment
+- [ ] CI/CD pipeline
+
+---
+
+# Development Philosophy
+This project separates:
+
+AI Signal Generation from Risk Management from Strategy Logic from Trade Execution
+
+The engine only focuses on:
+
+Market Data + Artificial Intelligence + Signal Generation
+
+External systems can handle:
+
+- Risk management
+- Position sizing
+- Order execution
+- Portfolio management
+
+---
+
+# Contributing
+Contributions are welcome.
+Steps:
+1. Fork repository
+2. Create feature branch
+git checkout -b feature/new-model
+
+3. Commit changes
+git commit -m "Add new AI model"
+
+4. Push branch
+git push origin feature/new-model
+
+5. Open Pull Request
+
+---
+
+# License
+
+MIT License
+
+---
+
+# Disclaimer
+Trading financial markets involves risk.
+This software is provided for educational and research purposes only.
+Always perform your own testing before using any trading system with real funds.
