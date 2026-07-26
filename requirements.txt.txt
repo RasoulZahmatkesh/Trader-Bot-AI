@@ -5,3 +5,4 @@ ta
 torch
 websockets
 python-dotenv
+scikit-learn
